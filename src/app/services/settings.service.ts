@@ -1,4 +1,5 @@
 import {EventEmitter, Injectable, Input} from "@angular/core";
+import { env } from "src/env";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SettingsService {
   refreshApiKey = new EventEmitter<string>();
 
   constructor() {
-    const savedApiKey = localStorage.getItem('apiKey');
+    const savedApiKey = env.API_KEY;
     if (savedApiKey) {
       this.apiKey = savedApiKey;
     }

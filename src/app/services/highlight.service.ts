@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import 'clipboard';
 import hljs from 'highlight.js';
 import CopyButtonPlugin from "../../customTypings/highlight-copy";
 

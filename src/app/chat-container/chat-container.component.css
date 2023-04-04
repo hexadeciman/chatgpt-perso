@@ -35,32 +35,6 @@
   background-color: var(--message-left);
 }
 
-.message-content-left::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -10px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid var(--message-left);
-  transform: translateY(-50%);
-}
-
-.message-content-right::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid var(--message-right);
-  transform: translateY(-50%);
-}
-
 .chat-message.user .message-content::before {
   display: none;
 }
@@ -90,7 +64,7 @@
 }
 
 .message-timestamp {
-  color: #999;
+  color: #ebebeb;
   font-size: 12px;
   margin-top: 5px;
 }

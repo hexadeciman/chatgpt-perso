@@ -4,14 +4,29 @@
     <p>Loading please wait...</p>
   </div>
   <div class="d-flex">
-      <textarea #messageInputArea class="textarea-message" rows="1" [(ngModel)]="messageInput" cdkTextareaAutosize
-                cdkAutosizeMinRows="1"
-                cdkAutosizeMaxRows="3" type="text" placeholder="Type a message..."
-                (keydown.enter)="$event.preventDefault(); sendMessage.emit(messageInput); messageInput = '';"></textarea>
+    <textarea
+      #messageInputArea
+      class="textarea-message"
+      rows="1"
+      [(ngModel)]="messageInput"
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="3"
+      type="text"
+      placeholder="Envoyer un message ..."
+      (keydown.enter)="
+        $event.preventDefault();
+        sendMessage.emit(messageInput);
+        messageInput = ''
+      "
+    ></textarea>
     <div class="d-flex send-buttons">
-      <button aria-label="Send" (click)="sendMessage.emit(messageInput); messageInput = '';"><i class="bi bi-send"></i></button>
-      <button aria-label="Resend" (click)="resendMessage.emit()"><i class="bi bi-arrow-repeat"></i></button>
-      <app-audio-component (audioTextUpdated)="updateMessage($event)" (isLoading)="changeLoading($event)"></app-audio-component>
+      <button
+        aria-label="Send"
+        (click)="sendMessage.emit(messageInput); messageInput = ''"
+      >
+        <i class="bi bi-send"></i>
+      </button>
     </div>
   </div>
 </div>

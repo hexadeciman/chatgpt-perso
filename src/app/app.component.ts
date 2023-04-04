@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {
   ChatCompletionRequestMessageRoleEnum,
   Configuration,
@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     tables: true, emoji: true, underline: true, openLinksInNewWindow: true, tasklists: true,
     strikethrough: true, simplifiedAutoLink: true
   });
+  showToolbar = false;
 
   @ViewChild('toolbarComponent') toolbarComponent: ToolbarComponent;
   @ViewChild('chatContainerComponent') chatContainer: ChatContainerComponent;
@@ -39,6 +40,17 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if (!this.settings.apiKey) {
       this.openIntroDialog();
+    }
+  }
+
+  counter = 0;
+  @HostListener('window:keydown.control.t', ['$event'])
+  bigFont(event: KeyboardEvent) {
+    event.preventDefault();
+    this.counter++;
+    if(this.counter === 3) {
+      this.showToolbar = !this.showToolbar;
+      this.counter = 0;
     }
   }
 
@@ -69,7 +81,7 @@ export class AppComponent implements OnInit {
       content: message,
       contentRaw: message,
       timestamp: new Date(),
-      avatar: '<img src="/assets/person.png" alt="Chatworm" width="50px"/>',
+      avatar: '<img src="/assets/gpt.jpg" alt="Chatworm" width="50px"/>',
       isUser: true
     });
 

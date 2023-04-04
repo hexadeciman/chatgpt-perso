@@ -1,6 +1,8 @@
 <app-header-component></app-header-component>
-<app-toolbar #toolbarComponent></app-toolbar>
+<app-toolbar *ngIf="showToolbar" #toolbarComponent></app-toolbar>
 <app-chat-container #chatContainerComponent></app-chat-container>
-<app-chat-prompt-component (sendMessage)="sendMessage($event)"
-                           (resendMessage)="resendLastMessage()">
+<app-chat-prompt-component
+  (sendMessage)="sendMessage($event)"
+  (resendMessage)="resendLastMessage()"
+>
 </app-chat-prompt-component>
